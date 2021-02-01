@@ -8,7 +8,7 @@ namespace ToDoListProject.Services
 {
     public interface IToDoListServices
     {
-        ToDoListItem AddItem(ToDoListItem item);
-        Dictionary<string, ToDoListItem> GetToDoListItem();
+        ToDoListItem AddItem(ToDoListItem item, string UserName);
+        Dictionary<string, ToDoListItem> GetToDoListItem(string UserName);
     }
 }

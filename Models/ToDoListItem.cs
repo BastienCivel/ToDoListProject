@@ -9,5 +9,7 @@ namespace ToDoListProject.Models
     {
         public int Id { get; set; }
         public string ItemName { get; set; }
+
+        public string userName { get; set; }
     }
 }

@@ -16,16 +16,20 @@ namespace ToDoListProject.Services
             _todolistItem = new Dictionary<string, ToDoListItem>();
         }
 
-        public ToDoListItem AddItem(ToDoListItem item)
+        //Ajouter un objet à la todolist en y associant le nom de l'utilisateur l'ayant ajouté
+        public ToDoListItem AddItem(ToDoListItem item, string UserName)
         {
-            _todolistItem.Add(item.ItemName, item);
+            item.userName = UserName;
+            _todolistItem.Add(item.ItemName + "." + item.Id, item);
 
             return item;
         }
-
-        public Dictionary<string, ToDoListItem> GetToDoListItem()
+        //Récupérer la liste des items d'un utilisateur
+        public Dictionary<string, ToDoListItem> GetToDoListItem(string Username)
         {
-            return _todolistItem;
+            Dictionary<string, ToDoListItem> result = _todolistItem.Where
+                (re => re.Value.userName == Username).ToDictionary(i => i.Key, i => i.Value);
+            return result;
         }
     }
 }
